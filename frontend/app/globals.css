@@ -1,26 +1,196 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background-color: #ffffff;
+  --color: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark-theme {
+  --background-color: #171717;
+  --color: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.fanta-theme {
+  --background-color: #ffe4c2;
+  --color: #ff7300;
+}
+
+.chocolate-theme {
+  --background-color: #8d7666;
+  --color: #fff8dc;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background-color: var(--background-color);
+  color: var(--color);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+#Container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+#Container > div {
+  width: 100vw;
+}
+
+p {
+  font-size: 1.3vw;
+}
+
+#div1 {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+#div2 {
+  flex: 1 1 0;
+  display: flex;
+  justify-content: center;
+}
+
+#div2 > div {
+  flex: 1 1 0;
+  height: 100%;
+}
+
+#div3 {
+  background-color: var(--background-color);
+  max-height: 5vh;
+  display: flex;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+#title, #unId {
+  margin: 0;
+  padding: 0 10px;
+  font-weight: bold;
+}
+
+#title {
+  text-align: center;
+}
+
+#unId {
+  text-align: left;
+}
+
+
+hr {
+  background-color: var(--color);
+  height: 3px;
+}
+
+
+header {
+  display: flex;
+  background-color: var(--background-color);
+  max-height: 20vh;
+  align-items: center;
+  font-size: 1.3vw;
+}
+
+header a {
+  padding-right: 30px;
+  margin-left: auto;
+}
+
+#Tabs {
+  display: flex;
+  align-content: center;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  gap: 5px;
+}
+
+#Tabs span {
+  display: inline-block;
+  width: 2px;
+  height: auto;
+  background-color: var(--color);
+  margin: 0 6px;
+  vertical-align: middle;
+}
+
+button {
+  border: 2px solid transparent;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+button:focus {
+  outline: none;
+  border: 2px solid var(--color);
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+}
+
+#content, #content2, #content3 {
+  background-color: var(--background-color);
+}
+
+#AboutContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color);
+  color: var(--background-color);
+  justify-content: center;
+}
+
+#AboutContainer > #div1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20vh;
+}
+
+#AboutContainer > #div3 > footer {
+  background-color: var(--color);
+  color: var(--background-color);
+}
+
+#videoContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+select {
+  background-color: var(--background-color);
+}
+
+textarea {
+  border: 2px solid var(--color);
+}
+
+#EscapeTextTitle {
+  background-color: "black";
+  font-family: "monospace";
+  color: lime;
+  font-size: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+#EscapeText {
+  background-color: "black";
+  font-family: "monospace";
+  color: lime;
+  font-size: 20px;
+}
+
+#EscapeArea {
+  background-color: white;
+  color: black;
 }
