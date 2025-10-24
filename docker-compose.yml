@@ -1,0 +1,51 @@
+version: "3.9"
+
+services:
+     frontend:
+       build: ./frontend
+       container_name: escape_frontend
+       ports:
+         - "80:3000"
+       depends_on:
+         - api
+       environment:
+         - NODE_ENV=development
+         - NEXT_PUBLIC_API_URL=http://api:3000
+       volumes:
+         - ./frontend:/app
+         - /app/node_modules
+       command: npm run dev
+       restart: unless-stopped
+
+     api:
+       build: ./api
+       container_name: escape_api
+       ports:
+         - "4080:3000"  # Next.js default port for API app
+       environment:
+         - NODE_ENV=development
+         - PORT=3000
+         - DATABASE_URL=postgresql://postgres:password@db:5432/escaperoom
+       env_file:
+         - ./api/.env
+       volumes:
+         - ./api:/app
+         - /app/node_modules
+       command: npm run dev
+       restart: unless-stopped
+
+     db:
+       image: postgres:15
+       container_name: escape_db
+       environment:
+         POSTGRES_USER: postgres
+         POSTGRES_PASSWORD: password
+         POSTGRES_DB: escaperoom
+       ports:
+         - "5432:5432"
+       volumes:
+         - db_data:/var/lib/postgresql/data
+       restart: unless-stopped
+
+volumes:
+  db_data:

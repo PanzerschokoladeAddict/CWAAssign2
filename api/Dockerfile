@@ -1,13 +1,20 @@
 FROM node:lts
-   
-# Needed to compile native modules like sqlite3
-RUN apt-get update && apt-get install -y python3 make g++
-   
+
 WORKDIR /app
+
+# Copy package files
 COPY package*.json ./
+
+# Install dependencies
 RUN npm install
-   
+
+# Copy Prisma schema and app code
+COPY prisma ./prisma
 COPY . .
-   
+
+# Generate Prisma client
+RUN npx prisma generate
+
 EXPOSE 3000
+
 CMD ["npm", "run", "dev"]
