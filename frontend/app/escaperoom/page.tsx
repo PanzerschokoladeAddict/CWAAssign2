@@ -51,7 +51,8 @@ const page = () => {
         <div>
           <label id="EscapeText">Timer</label>
           <br />
-          <textarea
+          <input
+            type="number"
             id="EscapeArea"
             value={timer}
             onChange={(e) => setTimer(Number(e.target.value))}
