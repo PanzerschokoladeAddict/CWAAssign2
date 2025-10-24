@@ -9,7 +9,7 @@ generator client {
   output   = "../app/generated/prisma"
 }
 
-model  stage {
+model Stage {
   id           Int      @id @default(autoincrement())
   title        String
   instructions String
