@@ -20,6 +20,8 @@ services:
        container_name: escape_api
        ports:
          - "4080:3000"  # Next.js default port for API app
+       depends_on:
+         - db
        environment:
          - NODE_ENV=development
          - PORT=3000
@@ -28,7 +30,7 @@ services:
          - ./api/.env
        volumes:
          - ./api:/app
-         - /app/node_modules
+         - /app/node_modules  
        command: npm run dev
        restart: unless-stopped
 
