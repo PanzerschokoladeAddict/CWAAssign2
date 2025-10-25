@@ -16,15 +16,6 @@ const page = () => {
     setPreview({ title, instructions, timer, answer });
   };
 
-  const handleAddStage = () => {
-    const newStage = { title, instructions, timer, answer };
-    setStages([...stages, newStage]);
-    setTitle("");
-    setInstructions("");
-    setTimer(0);
-    setAnswer("");
-  };
-
   const handleSave = async () => {
     const stageData = { title, instructions, timer, answer };
     try {

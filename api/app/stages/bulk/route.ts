@@ -1,10 +1,9 @@
-// frontend/app/api/stages/bulk/route.ts
-import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma"; // Path to api/lib/prisma.tsx
+import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
     try {
-        const stages = await request.json();
+        const stages = await request.json();  // Array of { title, instructions, timer, answer }
         const createdStages = await prisma.stage.createMany({ data: stages });
         return NextResponse.json({ message: "Stages saved", count: createdStages.count });
     } catch (error) {
