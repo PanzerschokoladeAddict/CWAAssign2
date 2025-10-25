@@ -16,8 +16,6 @@ RUN chmod +x /app/wait-for-it.sh
 COPY prisma ./prisma
 COPY . .
 
-ENV DATABASE_URL="postgresql://dummy:dummy@localhost:5432/dummy"
-
 # Copy and set permissions for entrypoint script
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
