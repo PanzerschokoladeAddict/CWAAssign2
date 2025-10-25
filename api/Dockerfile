@@ -20,6 +20,10 @@ COPY . .
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
 
+# Set a dummy DATABASE_URL for prisma generate
+ARG DATABASE_URL=postgresql://dummy:dummy@localhost:5432/dummy
+ENV DATABASE_URL=$DATABASE_URL
+
 # Generate Prisma client during build
 RUN npx prisma generate
 
